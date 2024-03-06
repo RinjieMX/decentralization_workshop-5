@@ -3,6 +3,7 @@ import express from "express";
 import { BASE_NODE_PORT } from "../config";
 import { NodeState, Value } from "../types";
 import { delay } from "../utils";
+import axios from 'axios';
 import { error } from "console";
 
 export async function node(
@@ -33,12 +34,10 @@ export async function node(
   //Fonction qui permet d'envoyer les messages à tous les nodes
   function sendMessages(k: number, x: Value, phase: string) {
     for (let i = 0; i < N; i++) {
-      fetch(`http://localhost:${BASE_NODE_PORT + i}/message`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({k: k, x: x, phase: phase}),
+      axios.post(`http://localhost:${BASE_NODE_PORT + i}/message`, {
+        k: k,
+        x: x,
+        phase: phase
       });
     }
   }
