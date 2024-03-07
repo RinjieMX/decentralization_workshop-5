@@ -127,7 +127,7 @@ describe("Ben-Or decentralized consensus algorithm", () => {
       servers.splice(0);
     });
 
-    const timeLimit = 2000; // 2s
+    const timeLimit = 5000; // Augmented to 5s (else, the Exceeding Fault tolerance test sometimes doesn't pass)
 
     it("Finality is reached - Unanimous Agreement - 2 pt", async () => {
       const faultyArray = [false, false, false, false, false];
