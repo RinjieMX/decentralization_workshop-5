@@ -76,9 +76,9 @@ export async function node(
         if (arrayR[k].length >= (N - F)) {
           let nb0R = arrayR[k].filter((value) => value == 0).length;
           let nb1R = arrayR[k].filter((value) => value == 1).length;
-          if (nb0R > arrayR[k].length/2) {
+          if (nb0R > N/2) {
             x = 0;
-          } else if (nb1R > arrayR[k].length/2) {
+          } else if (nb1R > N/2) {
             x = 1;
           } else {
             x = "?";
